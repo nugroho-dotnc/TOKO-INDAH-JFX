@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.StackPane?>
+
+<?import javafx.scene.layout.VBox?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<StackPane alignment="CENTER" xmlns="http://javafx.com/javafx"
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.tokoindah.controller.adminPage.DashboardController">
+        <children>
+            <VBox alignment="TOP_LEFT" spacing="20.0">
+                <padding>
+                    <Insets topRightBottomLeft="20.0"/>
+                </padding>
+                <Label text="Selamat Datang di Dashboard!" styleClass="content-label" />
+                <GridPane vgap="10.0" hgap="10.0" alignment="BASELINE_CENTER" >
+                    <VBox alignment="CENTER" style="-fx-background-color: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);" GridPane.columnIndex="0" GridPane.rowIndex="0"  GridPane.hgrow="ALWAYS" >
+                        <padding>
+                            <Insets topRightBottomLeft="30.0"/>
+                        </padding>
+                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;">
+                        </Label>
+                        <Label text="Pelanggan"/>
+                    </VBox>
+                    <VBox alignment="CENTER"
+                          style="-fx-background-color: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+                          GridPane.columnIndex="1"
+                          GridPane.rowIndex="0"
+                          GridPane.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="30.0"/>
+                        </padding>
+                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;">
+                        </Label>
+                        <Label text="Keranjang"/>
+                    </VBox>
+                    <VBox alignment="CENTER"
+                          style="-fx-background-color: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+                          GridPane.columnIndex="2"
+                          GridPane.rowIndex="0"
+                          GridPane.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="30.0"/>
+                        </padding>
+                        <Label text="1" style="-fx-font-size: 20.0;  -fx-font-weight: bold;">
+                        </Label>
+                        <Label text="Pendapatan"/>
+                    </VBox>
+                    <VBox alignment="CENTER" style="-fx-background-color: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
+                          GridPane.columnIndex="3"
+                          GridPane.rowIndex="0"
+                          GridPane.hgrow="ALWAYS">
+                        <padding>
+                            <Insets topRightBottomLeft="30.0"/>
+                        </padding>
+                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;">
+                        </Label>
+                        <Label text="Total Revenue"/>
+                    </VBox>
+                </GridPane>
+
+                <Label text="Laporan Transaksi" style="-fx-font-size: 24.0; -fx-text-alignment: left" />
+                <TableView fx:id="productTable" prefHeight="400.0" prefWidth="600.0">
+                    <columns>
+                        <TableColumn fx:id="nomor_transaksi" text="nomor transaksi">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nomor_transaksi" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="tanggal_transaksi" text="tanggal transaksi">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="tanggal_transaksi" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="nama_pelanggan" text="nama pelanggan">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="nama_pelanggan" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="total" text="total">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="total" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="pembayaran" text="pembayaran">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="pembayaran" />
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="kembalian" text="kembalian">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="kembalian" />
+                            </cellValueFactory>
+                        </TableColumn>
+                    </columns>
+                    <columnResizePolicy>
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /> </columnResizePolicy>
+                </TableView>
+            </VBox>
+        </children>
+</StackPane>
