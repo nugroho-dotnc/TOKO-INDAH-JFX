@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.tokoindah.controller.adminPage.product.AddProductController"
+      prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" spacing="16" >
+            <padding>
+                <Insets topRightBottomLeft="32"/>
+            </padding>
+            <Label styleClass="content-label">
+                ADD PRODUCT
+            </Label>
+            <GridPane alignment="TOP_CENTER" hgap="10" vgap="10" style="-fx-background-color: #FFF"  HBox.hgrow="ALWAYS">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/> <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/>
+                </columnConstraints>
+                <padding>
+                    <Insets topRightBottomLeft="16"/>
+                </padding>
+                <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+                    <Label text="kode produk:" styleClass="label-input"/>
+                    <TextField promptText="Masukkan kode produk" fx:id="kode_produk" styleClass="custom-textInput">
+                        <padding>
+                            <Insets right="12" left="12" top="8" bottom="8"/>
+                        </padding>
+                    </TextField>
+                </VBox>
+                <VBox spacing="6"  GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <Label text="nama produk:" styleClass="label-input"/>
+                    <TextField promptText="Masukkan nama produk" fx:id="nama_produk" styleClass="custom-textInput">
+                        <padding>
+                            <Insets right="12" left="12" top="8" bottom="8"/>
+                        </padding>
+                    </TextField>
+                </VBox>
+                <VBox spacing="6"  GridPane.rowIndex="1" GridPane.columnIndex="0">
+                    <Label text="kategori produk:" styleClass="label-input"/>
+                    <TextField promptText="Masukkan kategori produk" fx:id="kategori" styleClass="custom-textInput">
+                        <padding>
+                            <Insets right="12" left="12" top="8" bottom="8"/>
+                        </padding>
+                    </TextField>
+                </VBox>
+               <VBox spacing="6"  GridPane.rowIndex="1" GridPane.columnIndex="1">
+                   <Label text="stock produk:" styleClass="label-input"/>
+                   <TextField promptText="Masukkan stock produk" fx:id="stock" styleClass="custom-textInput">
+                       <padding>
+                           <Insets right="12" left="12" top="8" bottom="8"/>
+                       </padding>
+                   </TextField>
+               </VBox>
+                <VBox spacing="6" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                    <Label text="harga modal produk:" styleClass="label-input"/>
+                    <TextField promptText="Masukkan harga_modal produk" fx:id="harga_modal" styleClass="custom-textInput">
+                        <padding>
+                            <Insets right="12" left="12" top="8" bottom="8"/>
+                        </padding>
+                    </TextField>
+                </VBox>
+               <VBox spacing="6" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+                   <Label text="harga jual produk:" styleClass="label-input"/>
+                   <TextField promptText="Masukkan harga_jual produk" fx:id="harga_jual" styleClass="custom-textInput">
+                       <padding>
+                           <Insets right="12" left="12" top="8" bottom="8"/>
+                       </padding>
+                   </TextField>
+               </VBox>
+            </GridPane>
+</VBox>

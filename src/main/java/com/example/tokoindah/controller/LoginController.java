@@ -34,17 +34,15 @@ public class LoginController {
 
             try {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-
                 if("admin".equals(username) && "admin".equals(password)) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-view.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+                    Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
                     stage.setTitle("ADMIN PAGE");
                     stage.setScene(scene);
                     stage.show();
                 } else if("kasir".equals(username) && "kasir".equals(password)) {
-
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/kasir-view.fxml"));
-                    Scene scene = new Scene(fxmlLoader.load(), 800, 600);
+                    Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
                     stage.setTitle("KASIR PAGE");
                     stage.setScene(scene);
                     stage.show();

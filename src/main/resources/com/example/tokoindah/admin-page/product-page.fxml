@@ -22,16 +22,24 @@
                <padding>
                    <Insets topRightBottomLeft="20.0"/>
                </padding>
+
+<!--               BAGIAN ATAS PAGE-->
                <HBox alignment="CENTER" style=" -fx-border-width: 0 0 2px 0;-fx-border-color: transparent transparent #2c3e50 transparent;">
                    <padding>
                        <Insets bottom="10.0"/>
                    </padding>
                    <HBox alignment="CENTER_LEFT" spacing="10">
-                       <TextField promptText="Search here ..." style="-fx-font-size: 16"/> <Button text="search" style="-fx-font-size: 16;-fx-background-color: #2c3e50; -fx-text-fill: #FFF;"></Button>
+<!--                       SEARCH FIELD-->
+                       <TextField promptText="Search here ..." style="-fx-font-size: 16" fx:id="search_field"/>
+                       <Button text="search" fx:id="search_btn" style="-fx-font-size: 16;-fx-background-color: #2c3e50; -fx-text-fill: #FFF;"></Button>
                    </HBox>
                    <Region HBox.hgrow="ALWAYS" />
-                   <Button text="TAMBAH PRODUK" fx:id="login" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+
+<!--                   TOMBOL TAMBAH PRODUK-->
+                   <Button text="TAMBAH PRODUK" fx:id="tambah_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
                </HBox>
+
+<!--               BAGIAN TABLE-->
                <TableView fx:id="productTable" prefHeight="400.0" HBox.Hgrow="ALWAYS">
                    <columns>
                        <TableColumn fx:id="no" text="no">

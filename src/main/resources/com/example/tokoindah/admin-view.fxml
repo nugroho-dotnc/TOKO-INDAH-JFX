@@ -6,7 +6,8 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane fx:id="mainBorderPane" prefHeight="500.0" prefWidth="700.0"
+<?import javafx.scene.layout.Region?>
+<BorderPane fx:id="mainBorderPane"
             xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.tokoindah.controller.AdminController"
@@ -20,8 +21,9 @@
 
                 <Button fx:id="dashboardButton" text="Dashboard" styleClass="sidebar-button" onAction="#handleDashboardClick" />
                 <Button fx:id="productButton" text="Product" styleClass="sidebar-button" onAction="#handleProductClick" />
-
+                <Region VBox.vgrow="ALWAYS"/>
                 <Separator styleClass="sidebar-separator" VBox.vgrow="ALWAYS" />
+                <Button fx:id="logout" text="logout" styleClass="sidebar-button" onAction="#handleLogout" />
             </children>
         </VBox>
     </left>
