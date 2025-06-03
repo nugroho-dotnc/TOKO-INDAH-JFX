@@ -7,6 +7,7 @@ module com.example.tokoindah {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
+    requires java.xml.crypto;
 
     opens com.example.tokoindah to javafx.fxml;
     exports com.example.tokoindah;
