@@ -13,23 +13,34 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class KasirController {
+
     @FXML
     private StackPane contentPane;
 
     @FXML
     private Button transactionButton;
     @FXML
+    private Button productButton;
+
+    @FXML
     public void initialize() {
         loadPage("transaction-page.fxml");
         transactionButton.setStyle("-fx-background-color: #34495e;");
+        productButton.setStyle("-fx-background-color: transparent;");
     }
 
     public void handleTransaction(ActionEvent actionEvent) {
         loadPage("transaction-page.fxml");
         System.out.println("Tombol Dashboard diklik!");
         transactionButton.setStyle("-fx-background-color: #34495e;");
+        productButton.setStyle("-fx-background-color: transparent;");
     }
-
+    public void handleProduct(ActionEvent actionEvent) {
+        loadPage("product-page.fxml");
+        System.out.println("Tombol Dashboard diklik!");
+        transactionButton.setStyle("-fx-background-color: transparent;");
+        productButton.setStyle("-fx-background-color: #34495e;");
+    }
     @FXML
     private void handleLogout(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -43,6 +54,7 @@ public class KasirController {
             System.err.println(e);
         }
     }
+
     // Metode untuk memuat FXML ke dalam contentPane
     private void loadPage(String fxmlFileName) {
         try {
@@ -57,4 +69,6 @@ public class KasirController {
             contentPane.getChildren().setAll(errorLabel);
         }
     }
+
+
 }

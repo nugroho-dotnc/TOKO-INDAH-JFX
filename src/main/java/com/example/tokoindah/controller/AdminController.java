@@ -18,8 +18,13 @@ public class AdminController {
 
     public BorderPane mainBorderPane;
     @FXML
+    private Button pelangganButton;
+    @FXML
+    private Button transactionButton;
+    @FXML
+    private Button userButton;
+    @FXML
     private StackPane contentPane;
-
     @FXML
     private Button dashboardButton;
     @FXML
@@ -38,6 +43,9 @@ public class AdminController {
         System.out.println("Tombol Dashboard diklik!");
         dashboardButton.setStyle("-fx-background-color: #34495e;");
         productButton.setStyle("-fx-background-color: transparent;");
+        pelangganButton.setStyle("-fx-background-color: transparent;");
+        transactionButton.setStyle("-fx-background-color: transparent;");
+        userButton.setStyle("-fx-background-color: transparent;");
     }
 
     @FXML
@@ -46,6 +54,36 @@ public class AdminController {
         System.out.println("Tombol Product diklik!");
         dashboardButton.setStyle("-fx-background-color: transparent;");
         productButton.setStyle("-fx-background-color: #34495e;");
+        pelangganButton.setStyle("-fx-background-color: transparent;");
+        transactionButton.setStyle("-fx-background-color: transparent;");
+        userButton.setStyle("-fx-background-color: transparent;");
+    }
+    public void handlePelangganClick(ActionEvent actionEvent) {
+        loadPage("pelanggan-page.fxml");
+        System.out.println("Tombol Product diklik!");
+        dashboardButton.setStyle("-fx-background-color: transparent;");
+        productButton.setStyle("-fx-background-color: transparent;");
+        pelangganButton.setStyle("-fx-background-color: #34495e;");
+        transactionButton.setStyle("-fx-background-color: transparent;");
+        userButton.setStyle("-fx-background-color: transparent;");
+    }
+    public void handleTransactionClick(ActionEvent actionEvent) {
+        loadPage("transaction-page.fxml");
+        System.out.println("Tombol Product diklik!");
+        dashboardButton.setStyle("-fx-background-color: transparent;");
+        productButton.setStyle("-fx-background-color: transparent;");
+        pelangganButton.setStyle("-fx-background-color: transparent;");
+        transactionButton.setStyle("-fx-background-color: #34495e;");
+        userButton.setStyle("-fx-background-color: transparent;");
+    }
+    public void handleUserButton(ActionEvent actionEvent) {
+        loadPage("user-page.fxml");
+        System.out.println("Tombol Product diklik!");
+        dashboardButton.setStyle("-fx-background-color: transparent;");
+        productButton.setStyle("-fx-background-color: transparent;");
+        pelangganButton.setStyle("-fx-background-color: transparent;");
+        transactionButton.setStyle("-fx-background-color: transparent;");
+        userButton.setStyle("-fx-background-color: #34495e;");
     }
     @FXML
     private void handleLogout(ActionEvent event) {
@@ -74,6 +112,7 @@ public class AdminController {
             contentPane.getChildren().setAll(errorLabel);
         }
     }
+
 
 
 }
