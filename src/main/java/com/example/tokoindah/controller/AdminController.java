@@ -1,16 +1,22 @@
 package com.example.tokoindah.controller;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.Parent;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class AdminController {
 
+    public BorderPane mainBorderPane;
     @FXML
     private StackPane contentPane;
 
@@ -41,7 +47,19 @@ public class AdminController {
         dashboardButton.setStyle("-fx-background-color: transparent;");
         productButton.setStyle("-fx-background-color: #34495e;");
     }
-
+    @FXML
+    private void handleLogout(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        try{
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/login-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
+            stage.setTitle("LOGIN PAGE!");
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            System.err.println(e);
+        }
+    }
     // Metode untuk memuat FXML ke dalam contentPane
     private void loadPage(String fxmlFileName) {
         try {
@@ -56,4 +74,6 @@ public class AdminController {
             contentPane.getChildren().setAll(errorLabel);
         }
     }
+
+
 }

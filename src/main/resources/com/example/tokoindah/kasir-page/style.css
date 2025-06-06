@@ -1,39 +1,13 @@
 /* style.css */
-
-.sidebar {
-    -fx-background-color: #2c3e50;
-    -fx-padding: 10px 0;
-    -fx-spacing: 5px;
-}
-
-.sidebar-title {
-    -fx-text-fill: #ecf0f1;
-    -fx-font-size: 20px;
-    -fx-font-weight: bold;
-    -fx-padding: 20px 20px 10px 20px;
-}
-
-.sidebar-button {
-    -fx-background-color: transparent;
-    -fx-text-fill: #ecf0f1;
-    -fx-font-size: 14px;
-    -fx-alignment: center-left;
-    -fx-padding: 10px 20px;
-    -fx-pref-width: 200px;
-}
-
-.sidebar-button:hover {
-    -fx-background-color: #34495e;
-    -fx-cursor: hand;
-}
-
 .main-content {
     -fx-background-color: #f0f2f5;
     -fx-padding: 20px;
 }
-.w-full{
-    -fx-min-width: 100%;
+.label-input{
+    -fx-font-size: 16px;
+    -fx-text-fill: #282727;
 }
+
 .content-label {
     -fx-font-size: 24px;
     -fx-text-fill: #333333;
@@ -43,7 +17,7 @@
 
 .custom-textInput {
     -fx-font-size: 16px;
-    -fx-padding: 10px 15px;
+    -fx-padding: 6px 8px;
     -fx-background-color: #ffffff;
     -fx-border-color: #34495e;
     -fx-border-width: 1px;
@@ -54,6 +28,9 @@
     -fx-highlight-fill: #3498db;
     -fx-highlight-text-fill: #ffffff;
 }
+.w-full{
+    -fx-min-width: 100%;
+}
 
 .custom-textInput:focused {
     -fx-border-color: #2980b9;
@@ -63,4 +40,13 @@
 
 .custom-textInput:hover {
     -fx-border-color: #3498db;
+}
+.total-container{
+    -fx-background-color: #ffffff;
+    -fx-padding: 16px 8px;
+}
+.addition-form{
+    -fx-background-color: #ffffff;
+    -fx-padding: 8px 12px;
+    -fx-min-width: 350px;
 }
