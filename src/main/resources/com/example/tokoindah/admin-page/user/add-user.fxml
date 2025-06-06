@@ -6,9 +6,59 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tokoindah.controller.adminPage.user.UserAddController"
-            prefHeight="400.0" prefWidth="600.0" >
-
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.tokoindah.controller.adminPage.user.UserAddController"
+      prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" spacing="16" >
+    <padding>
+        <Insets topRightBottomLeft="32"/>
+    </padding>
+    <Label styleClass="content-label">
+        ADD USER
+    </Label>
+    <GridPane alignment="TOP_CENTER" hgap="10" vgap="10" style="-fx-background-color: #FFF"  HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/> <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/>
+        </columnConstraints>
+        <padding>
+            <Insets topRightBottomLeft="16"/>
+        </padding>
+        <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Label text="Nama User:" styleClass="label-input"/>
+            <TextField promptText="Masukkan nama user" fx:id="name" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6"  GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <Label text="Username :" styleClass="label-input"/>
+            <TextField promptText="Masukkan username" fx:id="username" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6"  GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Label text="Password :" styleClass="label-input"/>
+            <TextField promptText="Masukkan password" fx:id="password" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6"  GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Label text="Role:" styleClass="label-input"/>
+            <TextField promptText="Masukkan role" fx:id="role" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+    </GridPane>
+    <HBox spacing="16" alignment="CENTER_LEFT">
+        <Button text="Kembali" fx:id="back_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+        <Button text="TAMBAH USER" fx:id="tambah_user_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+    </HBox>
 </VBox>

@@ -6,9 +6,75 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+<?import javafx.geometry.Insets?>
 <VBox xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tokoindah.controller.adminPage.product.EditProductController"
-            prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" spacing="16">
-
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.tokoindah.controller.adminPage.product.EditProductController"
+      prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" spacing="16">
+    <padding>
+        <Insets topRightBottomLeft="32"/>
+    </padding>
+    <Label styleClass="content-label">
+        EDIT PRODUCT
+    </Label>
+    <GridPane alignment="TOP_CENTER" hgap="10" vgap="10" style="-fx-background-color: #FFF"  HBox.hgrow="ALWAYS">
+        <columnConstraints>
+            <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/> <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/>
+        </columnConstraints>
+        <padding>
+            <Insets topRightBottomLeft="16"/>
+        </padding>
+        <VBox spacing="6" GridPane.rowIndex="0" GridPane.columnIndex="0">
+            <Label text="kode produk:" styleClass="label-input"/>
+            <TextField promptText="Edit kode produk" fx:id="kode_produk" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6"  GridPane.rowIndex="0" GridPane.columnIndex="1">
+            <Label text="nama produk:" styleClass="label-input"/>
+            <TextField promptText="Edit nama produk" fx:id="nama_produk" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6"  GridPane.rowIndex="1" GridPane.columnIndex="0">
+            <Label text="kategori produk:" styleClass="label-input"/>
+            <TextField promptText="Edit kategori produk" fx:id="kategori" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6"  GridPane.rowIndex="1" GridPane.columnIndex="1">
+            <Label text="stock produk:" styleClass="label-input"/>
+            <TextField promptText="Edit stock produk" fx:id="stock" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6" GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Label text="harga modal produk:" styleClass="label-input"/>
+            <TextField promptText="Edit harga_modal produk" fx:id="harga_modal" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+        <VBox spacing="6" GridPane.rowIndex="3" GridPane.columnIndex="0" GridPane.columnSpan="2">
+            <Label text="harga jual produk:" styleClass="label-input"/>
+            <TextField promptText="Edit harga_jual produk" fx:id="harga_jual" styleClass="custom-textInput">
+                <padding>
+                    <Insets right="12" left="12" top="8" bottom="8"/>
+                </padding>
+            </TextField>
+        </VBox>
+    </GridPane>
+    <HBox spacing="16" alignment="CENTER_LEFT">
+        <Button text="Kembali" fx:id="back_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+        <Button text="EDIT PRODUK" fx:id="edit_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+    </HBox>
 </VBox>
