@@ -82,11 +82,11 @@
                                 <Insets right="12" left="12" top="4" bottom="4"/>
                             </padding>
                             <HBox spacing="10" alignment="BOTTOM_CENTER" HBox.hgrow="ALWAYS">
-                                <VBox>
+                                <VBox spacing="10">
                                     <Label styleClass="label-input" text="Kode Produk"></Label>
                                     <TextField  fx:id="input_kp" promptText="Cari kode produk ..." styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
                                 </VBox>
-                                <VBox>
+                                <VBox spacing="10">
                                     <Label styleClass="label-input" text="Qty"></Label>
                                     <TextField  fx:id="input_qty" promptText="Qty" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
                                 </VBox>

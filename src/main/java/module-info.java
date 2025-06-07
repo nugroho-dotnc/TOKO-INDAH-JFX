@@ -21,4 +21,6 @@ module com.example.tokoindah {
     exports com.example.tokoindah.model;
     opens  com.example.tokoindah.controller.kasirPage to javafx.fxml;
     exports com.example.tokoindah.controller.kasirPage;
+    opens com.example.tokoindah.controller.adminPage.user to javafx.fxml;
+    exports com.example.tokoindah.controller.adminPage.user;
 }

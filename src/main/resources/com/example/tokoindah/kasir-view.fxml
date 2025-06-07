@@ -18,6 +18,7 @@
                 <Label text="Menu Aplikasi" styleClass="sidebar-title" />
                 <Separator styleClass="sidebar-separator" />
                 <Button fx:id="transactionButton" text="Transaction" styleClass="sidebar-button" onAction="#handleTransaction" />
+                <Button fx:id="productButton" text="Product" styleClass="sidebar-button" onAction="#handleProduct" />
                 <Region VBox.vgrow="ALWAYS"/>
                 <Separator styleClass="sidebar-separator" VBox.vgrow="ALWAYS" />
                 <Button fx:id="logout" text="logout" styleClass="sidebar-button" onAction="#handleLogout" />
