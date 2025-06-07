@@ -6,7 +6,7 @@ public class Pelanggan {
     private String no_telp;
     private String alamat;
 
-    public String getKode_pelanggan() {
+    public String getKodePelanggan() {
         return kode_pelanggan;
     }
 

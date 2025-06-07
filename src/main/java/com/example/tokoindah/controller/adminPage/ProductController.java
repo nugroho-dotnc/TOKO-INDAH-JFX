@@ -48,6 +48,8 @@ public class ProductController {
     @FXML
     private Button tambah_btn;
 
+    private ArrayList<Produk> items;
+    private ObservableList<Produk> itemsObservable;
     @FXML
     public void initialize() {
         ProdukRepostiory p = new ProdukRepostiory();
@@ -69,11 +71,18 @@ public class ProductController {
                 }
             }
         });
-        ArrayList<Produk> items = p.getAllProduk();
-        ObservableList<Produk> observableList = FXCollections.observableArrayList(items);
-        productTable.setItems(observableList);
+        items = p.getAllProduk();
+        itemsObservable = FXCollections.observableArrayList(items);
+        productTable.setItems(itemsObservable);
         search_btn.setOnAction(event -> {
-
+            String query = search_field.getText();
+            if(query.isEmpty()){
+                items = p.getAllProduk();
+            }else{
+                items = p.searchProduk(query);
+            }
+            itemsObservable = FXCollections.observableArrayList(items);
+            productTable.setItems(itemsObservable);
         });
         tambah_btn.setOnAction(event -> {
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
