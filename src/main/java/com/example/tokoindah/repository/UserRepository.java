@@ -25,7 +25,7 @@ public class UserRepository extends Database {
         }
     }
 
-    public ArrayList<User> getUser() {
+    public ArrayList<User> getUsers() {
         try {
             ArrayList<User> users = new ArrayList<>();
             String sql = "SELECT * FROM user";
@@ -70,14 +70,11 @@ public class UserRepository extends Database {
         return null;
     }
 
-//    public static void main(String[] args) {
-//        UserRepository userRepository = new UserRepository();
-//        User users = userRepository.getUserByUsername("admin");
-//        if(users == null) {
-//            System.out.println("User not found");
-//        } else {
-//            System.out.println(users.getUsername());
-//        }
-//
-//    }
+    public static void main(String[] args) {
+        UserRepository userRepository = new UserRepository();
+        userRepository.createUser("Admin", "admin", "admin123", "admin");
+        ArrayList<User> users = userRepository.getUsers();
+        User user = userRepository.getUserByUsername("admin");
+        System.out.println(user.getUsername());
+    }
 }

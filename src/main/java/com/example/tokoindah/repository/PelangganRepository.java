@@ -3,10 +3,12 @@ package com.example.tokoindah.repository;
 import com.example.tokoindah.database.Database;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Random;
 import java.util.Date;
+import com.example.tokoindah.model.Pelanggan;
 
 public class PelangganRepository extends Database {
     public void createPelanggan(String nama, String no_telpon, String alamat) {
@@ -22,6 +24,27 @@ public class PelangganRepository extends Database {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public Pelanggan getPelangganByKode(String kode_pelanggan) {
+        try {
+            String sql = "SELECT * FROM pelanggan WHERE kode_pelanggan = ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, kode_pelanggan);
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+                String kodePelanggan = rs.getString("kode_pelanggan");
+                String nama = rs.getString("nama");
+                String telepon = rs.getString("telepon");
+                String alamat = rs.getString("alamat");
+                Pelanggan pelanggan = new Pelanggan(kodePelanggan, nama, telepon, alamat);
+                return pelanggan;
+            }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static String generateKodePelanggan() {

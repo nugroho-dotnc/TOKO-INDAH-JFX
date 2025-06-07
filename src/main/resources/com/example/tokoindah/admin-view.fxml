@@ -18,9 +18,11 @@
             <children>
                 <Label text="Menu Aplikasi" styleClass="sidebar-title" />
                 <Separator styleClass="sidebar-separator" />
-
                 <Button fx:id="dashboardButton" text="Dashboard" styleClass="sidebar-button" onAction="#handleDashboardClick" />
                 <Button fx:id="productButton" text="Product" styleClass="sidebar-button" onAction="#handleProductClick" />
+                <Button fx:id="pelangganButton" text="Pelanggan" styleClass="sidebar-button" onAction="#handlePelangganClick"/>
+                <Button fx:id="transactionButton" text="Transaction" styleClass="sidebar-button" onAction="#handleTransactionClick" />
+                <Button fx:id="userButton" text="User" styleClass="sidebar-button" onAction="#handleUserButton" />
                 <Region VBox.vgrow="ALWAYS"/>
                 <Separator styleClass="sidebar-separator" VBox.vgrow="ALWAYS" />
                 <Button fx:id="logout" text="logout" styleClass="sidebar-button" onAction="#handleLogout" />

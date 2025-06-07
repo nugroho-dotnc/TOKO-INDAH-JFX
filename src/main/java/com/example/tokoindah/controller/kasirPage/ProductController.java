@@ -1,4 +1,4 @@
-package com.example.tokoindah.controller.adminPage;
+package com.example.tokoindah.controller.kasirPage;
 
 import com.example.tokoindah.model.Produk;
 import javafx.collections.FXCollections;
@@ -10,10 +10,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
-import java.sql.Date;
-import java.time.LocalDate;
-
-import java.util.ArrayList;
 
 public class ProductController {
 
@@ -41,8 +37,7 @@ public class ProductController {
     private TextField search_field;
     @FXML
     private Button search_btn;
-    @FXML
-    private Button tambah_btn;
+
 
     @FXML
     public void initialize() {
@@ -71,18 +66,5 @@ public class ProductController {
 //                new Produk("PR003", "Pensil 2B", "Alat Tulis", 50, 1500, 2500, "2025-06-03")
 //        );
 //        productTable.setItems(dummyData);
-
-        tambah_btn.setOnAction(event -> {
-            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-page/product/add-product-view.fxml"));
-                Scene scene = new Scene(loader.load(), 1200, 800);
-                stage.setTitle("Add Product");
-                stage.setScene(scene);
-                stage.show();
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-        });
     }
 }

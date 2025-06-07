@@ -1,4 +1,5 @@
 package com.example.tokoindah.model;
+import java.sql.Date;
 
 public class Produk {
     private String kode_produk;
@@ -7,9 +8,9 @@ public class Produk {
     int stock;
     float harga_modal;
     float harga_jual;
-    String tanggal_input;
+    Date tanggal_input;
 
-    public Produk(String kode_produk, String nama_produk, String kategori_produk, int stock, float harga_modal, float harga_jual, String tanggal_input) {
+    public Produk(String kode_produk, String nama_produk, String kategori_produk, int stock, float harga_modal, float harga_jual, Date tanggal_input) {
         this.kode_produk = kode_produk;
         this.nama_produk = nama_produk;
         this.kategori_produk = kategori_produk;
@@ -43,7 +44,7 @@ public class Produk {
         return harga_jual;
     }
 
-    public String getTanggalInput() {
+    public Date getTanggalInput() {
         return tanggal_input;
     }
 
