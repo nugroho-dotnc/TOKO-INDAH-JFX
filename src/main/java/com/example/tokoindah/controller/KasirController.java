@@ -1,4 +1,5 @@
 package com.example.tokoindah.controller;
+import com.example.tokoindah.global.AppGlobal;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,6 +46,7 @@ public class KasirController {
     private void handleLogout(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         try{
+            AppGlobal.clearLoggedInUser();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/login-view.fxml"));
             Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
             stage.setTitle("LOGIN PAGE!");

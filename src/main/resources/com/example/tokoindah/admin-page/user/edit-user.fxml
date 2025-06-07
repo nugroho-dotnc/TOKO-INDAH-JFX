@@ -11,6 +11,9 @@
       xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.tokoindah.controller.adminPage.user.UserEditController"
       prefHeight="400.0" prefWidth="600.0" stylesheets="@style.css" spacing="16">
+    <padding>
+        <Insets topRightBottomLeft="32"></Insets>
+    </padding>
     <GridPane alignment="TOP_CENTER" hgap="10" vgap="10" style="-fx-background-color: #FFF"  HBox.hgrow="ALWAYS">
         <columnConstraints>
             <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/> <ColumnConstraints hgrow="ALWAYS" percentWidth="50.0"/>

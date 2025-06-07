@@ -130,8 +130,8 @@ public class PelangganRepository extends Database {
 
     public static void main(String[] args) {
         PelangganRepository pelangganRepository = new PelangganRepository();
-//        pelangganRepository.createPelanggan("yanto sujatmiko", "08926877923", "Bekasi bagian ngalor sitik");
-        Pelanggan p = pelangganRepository.getPelangganByTelepon("08926877923");
-        System.out.println(p.getNama());
+        pelangganRepository.createPelanggan("nunung paiman", "089523133302", "grogol");
+//        Pelanggan p = pelangganRepository.getPelangganByTelepon("08926877923");
+//        System.out.println(p.getNama());
     }
 }

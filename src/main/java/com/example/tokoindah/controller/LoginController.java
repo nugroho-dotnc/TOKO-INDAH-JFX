@@ -1,6 +1,7 @@
 package com.example.tokoindah.controller;
 
 import com.example.tokoindah.HelloApplication;
+import com.example.tokoindah.global.AppGlobal;
 import com.example.tokoindah.model.User;
 import com.example.tokoindah.repository.UserRepository;
 import javafx.fxml.FXML;
@@ -42,12 +43,14 @@ public class LoginController {
                     return;
                 }
                 if(user.getRole().equals("admin")) {
+                    AppGlobal.setLoggedInUser(user);
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
                     stage.setTitle("ADMIN PAGE");
                     stage.setScene(scene);
                     stage.show();
                 }else if(user.getRole().equals("kasir")) {
+                    AppGlobal.setLoggedInUser(user);
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/kasir-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
                     stage.setTitle("KASIR PAGE");

@@ -21,7 +21,7 @@
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="100" styleClass="label-input">
                                             No. Nota
                                         </Label>
-                                        <TextField promptText="XXXXXXXXX" fx:id="no_nota" styleClass="custom-textInput, w-full" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                        <TextField promptText="XXXXXXXXX" disable="true" fx:id="no_nota" styleClass="custom-textInput, w-full" GridPane.rowIndex="0" GridPane.columnIndex="1" minWidth="200">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>
@@ -29,7 +29,7 @@
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="100" styleClass="label-input">
                                             Tanggal
                                         </Label>
-                                        <TextField promptText="YYYY-MM-DD" fx:id="tanggal" styleClass="custom-textInput, w-full" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                                        <TextField promptText="YYYY-MM-DD" disable="true" fx:id="tanggal" styleClass="custom-textInput, w-full" GridPane.rowIndex="1" GridPane.columnIndex="1" minWidth="200">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>
@@ -37,7 +37,7 @@
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="100" styleClass="label-input">
                                             Kasir
                                         </Label>
-                                        <TextField promptText="Sujono" fx:id="kasir" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1">
+                                        <TextField promptText="Sujono" disable="true" fx:id="kasir" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1" minWidth="200">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>
@@ -47,31 +47,35 @@
                                 <!--                    Informasi Pelanggan-->
                                 <VBox spacing="20">
                                     <Label text="Informasi Pelanggan" styleClass="content-label"></Label>
-                                    <GridPane vgap="12" hgap="16">
+                                    <GridPane vgap="12" hgap="16" alignment="TOP_LEFT">
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="0" minWidth="100" styleClass="label-input">
-                                            Pelanggan
+                                            Telepon
                                         </Label>
-                                        <TextField fx:id="nama_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                                        <TextField  fx:id="telepon_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="0" GridPane.columnIndex="1" minWidth="200">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>
                                         </TextField>
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="100" styleClass="label-input">
-                                            Telepon
+                                            Pelanggan
                                         </Label>
-                                        <TextField  fx:id="telepon_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                                        <TextField fx:id="nama_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="1" GridPane.columnIndex="1" minWidth="200">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>
                                         </TextField>
+
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="100" styleClass="label-input">
                                             Alamat
                                         </Label>
-                                        <TextField  fx:id="alamat_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1">
-                                            <padding>
-                                                <Insets right="12" left="12" top="4" bottom="4"/>
-                                            </padding>
-                                        </TextField>
+                                        <TextArea  fx:id="alamat_pelanggan" promptText="Masukkan Alamat pelanggan" styleClass="custom-textarea" prefHeight="100" HBox.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.columnIndex="1" minWidth="200" maxWidth="300"/>
+                                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2" alignment="CENTER_RIGHT" styleClass="w-full">
+                                            <Button text="Tambah" fx:id="tambah_pelanggan_btn" styleClass="w-full" HBox.hgrow="ALWAYS"   style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+                                        </HBox>
+                                        <HBox GridPane.columnIndex="0" GridPane.rowIndex="4" GridPane.columnSpan="2" alignment="CENTER">
+                                            <Label  styleClass="w-full, label-input"
+                                                   fx:id="state_pelanggan" HBox.hgrow="ALWAYS" alignment="CENTER"/>
+                                        </HBox>
                                     </GridPane>
                                 </VBox>
                             </VBox>
