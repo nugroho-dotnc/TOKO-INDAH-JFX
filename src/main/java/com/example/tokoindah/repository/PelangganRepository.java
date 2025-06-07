@@ -27,6 +27,27 @@ public class PelangganRepository extends Database {
         }
     }
 
+    public Pelanggan getPelangganByTelepon(String telepon) {
+        try {
+           String sql = "SELECT * FROM pelanggan WHERE telepon = ?";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           stmt.setString(1, telepon);
+           ResultSet rs = stmt.executeQuery();
+           if(rs.next()) {
+               String kodePelanggan = rs.getString("kode_pelanggan");
+               String nama = rs.getString("nama");
+               String noTelepon = rs.getString("telepon");
+               String alamat = rs.getString("alamat");
+               Pelanggan p = new Pelanggan(kodePelanggan, nama, noTelepon, alamat);
+               return p;
+           }
+        } catch (SQLException e) {
+           System.out.println(e.getMessage());
+           e.printStackTrace();
+        }
+        return null;
+    }
+
     public ArrayList<Pelanggan> getPelangggan() {
         try {
             ArrayList<Pelanggan> pelangganList = new ArrayList<>();
@@ -64,27 +85,6 @@ public class PelangganRepository extends Database {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-    }
-
-    public Pelanggan getPelangganByKode(String kode_pelanggan) {
-        try {
-            String sql = "SELECT * FROM pelanggan WHERE kode_pelanggan = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, kode_pelanggan);
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()) {
-                String kodePelanggan = rs.getString("kode_pelanggan");
-                String nama = rs.getString("nama");
-                String telepon = rs.getString("telepon");
-                String alamat = rs.getString("alamat");
-                Pelanggan pelanggan = new Pelanggan(kodePelanggan, nama, telepon, alamat);
-                return pelanggan;
-            }
-        } catch(SQLException e) {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return null;
     }
 
     public ArrayList<Pelanggan> searchPelanggan(String namaPelanggan) {
@@ -130,7 +130,8 @@ public class PelangganRepository extends Database {
 
     public static void main(String[] args) {
         PelangganRepository pelangganRepository = new PelangganRepository();
-        pelangganRepository.createPelanggan("yanto sujatmiko", "08926877923", "Bekasi bagian ngalor sitik");
-        pelangganRepository.createPelanggan("bambang suprapto aditama", "0896837263", "BOGOR KE KANAN DIKIT");
+//        pelangganRepository.createPelanggan("yanto sujatmiko", "08926877923", "Bekasi bagian ngalor sitik");
+        Pelanggan p = pelangganRepository.getPelangganByTelepon("08926877923");
+        System.out.println(p.getNama());
     }
 }

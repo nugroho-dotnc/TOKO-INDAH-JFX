@@ -30,7 +30,7 @@ public class TransaksiRepository extends Database {
     public ArrayList<Transaksi> getTransaksi() {
         try {
            ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
-           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan";
+           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE deleted = false";
            PreparedStatement stmt = conn.prepareStatement(sql);
            ResultSet result = stmt.executeQuery();
            while(result.next()) {
@@ -74,6 +74,55 @@ public class TransaksiRepository extends Database {
         }
     }
 
+    public void deleteTransaksi(String nomorTransaksi) {
+        try {
+            String sql = "UPDATE transaksi SET deleted = true WHERE nomor_transaksi = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setString(1, nomorTransaksi);
+            int rowAffected = stmt.executeUpdate();
+            if(rowAffected > 0) {
+                System.out.println("Data has been deleted");
+            } else {
+                System.out.println("No data deleted");
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public ArrayList<Transaksi> searchByTanggal(String tanggal) {
+        try {
+           Date convertedDate = Date.valueOf(tanggal);
+           ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
+           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE tanggal_transaksi = ?";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           stmt.setDate(1, convertedDate);
+           ResultSet rs = stmt.executeQuery();
+           if(rs.next()) {
+               String nomorTransaksi = rs.getString("nomor_transaksi");
+               Date tanggalTransaksi = rs.getDate("tanggal_transaksi");
+               String catatanTransaksi = rs.getString("catatan_transaksi");
+               float total = rs.getFloat("total");
+               float pembayaran = rs.getFloat("pembayaran");
+               float kembalian = rs.getFloat("kembalian");
+               String kodePelanggan = rs.getString("kode_pelanggan");
+               String namaPelanggan = rs.getString("nama");
+               String telepon = rs.getString("telepon");
+               String alamat = rs.getString("alamat");
+               Pelanggan p = new Pelanggan(kodePelanggan, namaPelanggan, telepon, alamat);
+               Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi ,total, null ,pembayaran, kembalian, p);
+               dataTransaksi.add(t);
+               return dataTransaksi;
+           }
+        } catch(SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+
     public void countTransaksi() {
         try {
             String sql = "SELECT COUNT(*) FROM transaksi";
@@ -110,11 +159,10 @@ public class TransaksiRepository extends Database {
 
     public static void main(String[] args) {
         TransaksiRepository t = new TransaksiRepository();
-        ArrayList<Transaksi> transaksiData = t.getTransaksi();
-        for(Transaksi transaksi : transaksiData) {
-            System.out.println("Nama pelanggan : " + transaksi.getPelanggan().getNama());
+        ArrayList<Transaksi> transaksi = t.searchByTanggal("2025-06-07");
+        for(Transaksi data : transaksi) {
+            System.out.println(data.getTanggalTransaksi());
         }
-
     }
 
 

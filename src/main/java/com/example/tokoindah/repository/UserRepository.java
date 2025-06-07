@@ -70,9 +70,48 @@ public class UserRepository extends Database {
         return null;
     }
 
+    public void updateUser(int id, String nama, String username, String password, String role) {
+        try {
+           String sql = "UPDATE user SET nama = ?, username = ?, password = ?, role = ? WHERE id = ?";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           stmt.setString(1, nama);
+           stmt.setString(2, username);
+           stmt.setString(3, password);
+           stmt.setString(4, role);
+           stmt.setInt(5, id);
+           int rowAffected = stmt.executeUpdate();
+           if(rowAffected > 0) {
+               System.out.println("Data updated");
+           } else {
+               System.out.println("No data updated");
+           }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteUser(int id) {
+        try {
+            String sql = "DELETE FROM user WHERE id = ?";
+            PreparedStatement stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            int rowAffected = stmt.executeUpdate();
+            if(rowAffected > 0) {
+                System.out.println("Data has been deleted");
+            } else {
+                System.out.println("No data deleted");
+            }
+        } catch (SQLException e ) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+
+
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepository();
-        userRepository.createUser("Admin", "admin", "admin123", "admin");
-        userRepository.createUser("Kasir", "kasir", "kasir123", "kasir");
+        userRepository.updateUser(5, "nuganugay", "nugay", "nugay123", "admin");
     }
 }
