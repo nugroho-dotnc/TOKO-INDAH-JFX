@@ -8,59 +8,57 @@ import java.util.ArrayList;
 import com.example.tokoindah.model.Keranjang;
 
 public class KeranjangRepository extends Database {
-//    CREATE KERANJANG HARUS MENERIMA ARRAY LIST, PERMASALAHAN NYA ADALAH PADA MODEL
-    public void createKeranjang(int nomor_transaksi, String kode_produk, String nama_produk, float harga, int quantity, float subtotal) {
+    public void createKeranjang(ArrayList<Keranjang> keranjangList) {
         try {
-            String sql = "INSERT INTO keranjang (nomor_transaksi, kode_produk, nama_produk, harga, qty, subtotal) VALUES (?, ?, ?, ?, ?, ?)";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, nomor_transaksi);
-            ps.setString(2, kode_produk);
-            ps.setString(3, nama_produk);
-            ps.setFloat(4, harga);
-            ps.setInt(5, quantity);
-            ps.setFloat(6, subtotal);
-            ps.executeUpdate();
+           String sql = "INSERT INTO keranjang (nomor_transaksi, kode_produk, nama_produk, harga, qty, subtotal) VALUES (?,?,?,?,?,?)";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           for(Keranjang keranjang : keranjangList) {
+               stmt.setString(1, keranjang.getNomorTransaksi());
+               stmt.setString(2, keranjang.getKodeProduk());
+               stmt.setString(3, keranjang.getNamaProduk());
+               stmt.setFloat(4, keranjang.getHarga());
+               stmt.setInt(5, keranjang.getQty());
+               stmt.setFloat(6, keranjang.getSubtotal());
+               stmt.addBatch();
+           }
+           int[] result = stmt.executeBatch();
+           System.out.println(result + " rows inserted");
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
 
-    public ArrayList<Keranjang> showKeranjang(int nomor_transaksi) {
-        ArrayList<Keranjang> keranjangList = new ArrayList<>();
-
+    public ArrayList<Keranjang> getKeranjangByNomorTransaksi(String nomorTransaksi) {
         try {
-            String sql = "SELECT * FROM keranjang WHERE nomor_transaksi = ?";
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setInt(1, nomor_transaksi);
-
-            ResultSet rs = ps.executeQuery();
-
-            while (rs.next()) {
-                Keranjang keranjang = new Keranjang(
-                        rs.getInt("id_keranjang"),
-                        rs.getString("nomor_transaksi"),
-                        rs.getString("kode_produk"),
-                        rs.getString("nama_produk"),
-                        rs.getFloat("harga"),
-                        rs.getInt("qty"),
-                        rs.getFloat("subtotal")
-                );
-                keranjangList.add(keranjang);
-            }
+           ArrayList<Keranjang> keranjangList = new ArrayList<>();
+           String sql = "SELECT * FROM keranjang WHERE nomor_transaksi = ?";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           stmt.setString(1, nomorTransaksi);
+           ResultSet rs = stmt.executeQuery();
+           while(rs.next()) {
+               int id = rs.getInt("id_keranjang");
+               String nomor_transaksi = rs.getString("nomor_transaksi");
+               String nama_produk = rs.getString("nama_produk");
+               float harga = rs.getFloat("harga");
+               int qty = rs.getInt("qty");
+               float subtotal = rs.getFloat("subtotal");
+               String kodeProduk = rs.getString("kode_produk");
+               keranjangList.add(new Keranjang(id, nomor_transaksi, kodeProduk, nama_produk, harga, qty, subtotal));
+           }
+           return keranjangList;
         } catch (SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-
-        return keranjangList;
+        return null;
     }
 
     public static void main(String[] args) {
         KeranjangRepository keranjangRepository = new KeranjangRepository();
-        keranjangRepository.createKeranjang(12, "PRDK32", "buku", 20000, 3, 60000);
-        keranjangRepository.createKeranjang(12, "PRDK22", "tas", 50000, 2, 10000);
-
-        ArrayList<Keranjang> keranjangList = keranjangRepository.showKeranjang(12);
+        ArrayList<Keranjang> k = keranjangRepository.getKeranjangByNomorTransaksi("TR004");
+        for(Keranjang keranjang : k) {
+            System.out.println(keranjang.getIdKeranjang());
+        }
     }
 }

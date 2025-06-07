@@ -45,7 +45,7 @@ public class TransaksiRepository extends Database {
                String noTelepon = result.getString("telepon");
                String alamat = result.getString("alamat");
                Pelanggan pelanggan = new Pelanggan(kodePelanggan, nama, noTelepon, alamat);
-               Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi, total, null, pembayaran, kembalian, pelanggan);
+               Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi, total,  pembayaran, kembalian, pelanggan);
                dataTransaksi.add(t);
                return dataTransaksi;
            };
@@ -72,6 +72,33 @@ public class TransaksiRepository extends Database {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public Transaksi getTransaksiByKode(String kode) {
+        try {
+           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE nomor_transaksi = ?";
+           PreparedStatement stmt = conn.prepareStatement(sql);
+           stmt.setString(1, kode);
+           ResultSet rs = stmt.executeQuery();
+           if(rs.next()) {
+               String nomorTransaksi = rs.getString(1);
+               Date tanggalTransaksi = rs.getDate(2);
+               String catatan_transaksi = rs.getString(3);
+               float total = rs.getFloat(4);
+               float pembayaran = rs.getFloat(5);
+               float kembalian = rs.getFloat(6);
+               String kodePelanggan = rs.getString(7);
+               String nama = rs.getString(10);
+               String telepon = rs.getString(11);
+               String alamat = rs.getString(12);
+               Pelanggan p = new Pelanggan(kodePelanggan, nama, telepon, alamat);
+               return new Transaksi(nomorTransaksi, tanggalTransaksi, catatan_transaksi, total, pembayaran, kembalian, p);
+           }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public void deleteTransaksi(String nomorTransaksi) {
@@ -111,7 +138,7 @@ public class TransaksiRepository extends Database {
                String telepon = rs.getString("telepon");
                String alamat = rs.getString("alamat");
                Pelanggan p = new Pelanggan(kodePelanggan, namaPelanggan, telepon, alamat);
-               Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi ,total, null ,pembayaran, kembalian, p);
+               Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi ,total, pembayaran, kembalian, p);
                dataTransaksi.add(t);
                return dataTransaksi;
            }
@@ -159,10 +186,8 @@ public class TransaksiRepository extends Database {
 
     public static void main(String[] args) {
         TransaksiRepository t = new TransaksiRepository();
-        ArrayList<Transaksi> transaksi = t.searchByTanggal("2025-06-07");
-        for(Transaksi data : transaksi) {
-            System.out.println(data.getTanggalTransaksi());
-        }
+        Transaksi transaksi = t.getTransaksiByKode("TR004");
+        System.out.println(transaksi.getNomorTransaksi());
     }
 
 

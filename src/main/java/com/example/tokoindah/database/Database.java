@@ -7,7 +7,7 @@ public class Database {
     public static Connection conn;
 
     public Database() {
-            String url = "jdbc:mysql://localhost:3307/toko_indah";
+            String url = "jdbc:mysql://localhost:3306/toko_indah";
             String user = "root";
             String password = "";
         try {
