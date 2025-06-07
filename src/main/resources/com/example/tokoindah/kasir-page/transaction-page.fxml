@@ -57,7 +57,7 @@
                                             </padding>
                                         </TextField>
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="100" styleClass="label-input">
-                                            Tanggal
+                                            Telepon
                                         </Label>
                                         <TextField  fx:id="telepon_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="1" GridPane.columnIndex="1">
                                             <padding>
@@ -65,7 +65,7 @@
                                             </padding>
                                         </TextField>
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="100" styleClass="label-input">
-                                            Kasir
+                                            Alamat
                                         </Label>
                                         <TextField  fx:id="alamat_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1">
                                             <padding>

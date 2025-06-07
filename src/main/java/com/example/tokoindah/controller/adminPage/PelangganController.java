@@ -15,8 +15,10 @@ import javafx.scene.layout.HBox;
 import java.util.ArrayList;
 
 public class PelangganController {
-    public TextField search_field;
-    public Button search_btn;
+    @FXML
+    private TextField search_field;
+    @FXML
+    private Button search_btn;
     @FXML
     private TableColumn<Pelanggan, Void> nomor_pelanggan;
     @FXML
@@ -30,7 +32,10 @@ public class PelangganController {
     @FXML
     private TableColumn<Pelanggan, Void> aksi;
     @FXML
-    private TableView pelangganTable;
+    private TableView<Pelanggan> pelangganTable;
+
+    private  ArrayList<Pelanggan> items;
+    private  ObservableList<Pelanggan> observableList;
     @FXML
     void initialize() {
         PelangganRepository p = new PelangganRepository();
@@ -49,9 +54,19 @@ public class PelangganController {
                 }
             }
         });
-        ArrayList<Pelanggan> items = p.getPelangggan();
-        ObservableList<Pelanggan> observableList = FXCollections.observableArrayList(items);
+        items = p.getPelangggan();
+        observableList = FXCollections.observableArrayList(items);
         pelangganTable.setItems(observableList);
+        search_btn.setOnAction(event -> {
+            String query = search_field.getText();
+            if(query.isEmpty()){
+                items = p.getPelangggan();
+            }else{
+                items = p.searchPelanggan(query);
+            }
+            observableList = FXCollections.observableArrayList(items);
+            pelangganTable.setItems(observableList);
+        });
         aksi.setCellFactory(col -> new TableCell<>() {
             private final Button deleteBtn = new Button("Delete");
             private  HBox hBox = new HBox(10, deleteBtn);

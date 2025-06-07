@@ -92,7 +92,7 @@ public class PelangganRepository extends Database {
             ArrayList<Pelanggan> pelangganList = new ArrayList<>();
             String sql = "SELECT * FROM pelanggan WHERE nama LIKE ?";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, namaPelanggan);
+            ps.setString(1, "%" + namaPelanggan + "%");
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 String kodePelanggan = rs.getString("kode_pelanggan");
