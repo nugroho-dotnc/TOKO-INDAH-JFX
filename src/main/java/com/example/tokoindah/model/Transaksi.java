@@ -4,22 +4,19 @@ import java.util.Date;
 import java.util.ArrayList;
 
 public class Transaksi {
-    int id_transaksi;
     private String nomor_transaksi;
     private Date tanggal_transaksi;
     private String nama_pelanggan;
     private String catatan_transaksi;
-    private int total;
+    private float total;
     private ArrayList<Keranjang> list_keranjang;
-    private int pembayaran;
-    private int kembalian;
+    private float pembayaran;
+    private float kembalian;
     private Pelanggan pelanggan;
 
-    public Transaksi(int id_transaksi,String nomor_transaksi, Date tanggal_transaksi, String nama_pelanggan, String catatan_transaksi, int total, ArrayList<Keranjang> list_keranjang, int pembayaran, int kembalian, Pelanggan pelanggan) {
-        this.id_transaksi = id_transaksi;
+    public Transaksi(String nomor_transaksi, Date tanggal_transaksi, String catatan_transaksi, float total, ArrayList<Keranjang> list_keranjang, float pembayaran, float kembalian, Pelanggan pelanggan) {
         this.nomor_transaksi = nomor_transaksi;
         this.tanggal_transaksi = tanggal_transaksi;
-        this.nama_pelanggan = nama_pelanggan;
         this.catatan_transaksi = catatan_transaksi;
         this.total = total;
         this.list_keranjang = list_keranjang;
@@ -28,31 +25,23 @@ public class Transaksi {
         this.pelanggan = pelanggan;
     }
 
-    public int getIdTransaksi() {
-        return id_transaksi;
-    }
-    public String getNomorTransaksi() {
-        return nomor_transaksi;
-    }
+    public String getNomorTransaksi() { return nomor_transaksi; }
     public Date getTanggalTransaksi() {
         return tanggal_transaksi;
-    }
-    public String getNamaPelanggan() {
-        return nama_pelanggan;
     }
     public String getCatatanTransaksi() {
         return catatan_transaksi;
     }
-    public int getTotal() {
+    public float getTotal() {
         return total;
     }
     public ArrayList<Keranjang> getListKeranjang() {
         return list_keranjang;
     }
-    public int getPembayaran() {
+    public float getPembayaran() {
         return pembayaran;
     }
-    public int getKembalian() {
+    public float getKembalian() {
         return kembalian;
     }
     public Pelanggan getPelanggan() {

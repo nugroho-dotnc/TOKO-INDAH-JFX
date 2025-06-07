@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import com.example.tokoindah.model.Keranjang;
 
 public class KeranjangRepository extends Database {
+//    CREATE KERANJANG HARUS MENERIMA ARRAY LIST, PERMASALAHAN NYA ADALAH PADA MODEL
     public void createKeranjang(int nomor_transaksi, String kode_produk, String nama_produk, float harga, int quantity, float subtotal) {
         try {
             String sql = "INSERT INTO keranjang (nomor_transaksi, kode_produk, nama_produk, harga, qty, subtotal) VALUES (?, ?, ?, ?, ?, ?)";

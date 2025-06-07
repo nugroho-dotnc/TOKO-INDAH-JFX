@@ -4,7 +4,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class Database {
-    public Connection conn;
+    public static Connection conn;
 
     public Database() {
             String url = "jdbc:mysql://localhost:3307/toko_indah";
