@@ -12,11 +12,10 @@ import java.util.Random;
 
 public class ProdukRepostiory extends Database{
 
-    public void createProduk(String nama_produk, String kategori_produk, int stock, float harga_modal, float harga_jual) {
+    public void createProduk(String kode_produk, String nama_produk, String kategori_produk, int stock, float harga_modal, float harga_jual) {
         try {
             String sql = "INSERT INTO produk (kode_produk, nama_produk, kategori_produk, stock, harga_modal, harga_jual, tanggal_input) VALUES (?,?,?,?,?,?,?)";
             PreparedStatement ps = conn.prepareStatement(sql);
-            String kode_produk = generateKodeProduk();
             Date tanggal_input = Date.valueOf(LocalDate.now());
             ps.setString(1, kode_produk);
             ps.setString(2, nama_produk);
@@ -140,9 +139,8 @@ public class ProdukRepostiory extends Database{
 
     public static void main(String[] args) {
         ProdukRepostiory p = new ProdukRepostiory();
-        p.updateProduk("PROD20250606COCA", "Sampoerna", "Rokok", 10, 35000, 37000);
-
-
+        p.createProduk("SB01", "Singkong balado", "makanan", 50, 10000, 15000);
+        p.createProduk("UB01","Ubi Bakar", "makanan", 50, 8000, 17000);
     }
 
 }

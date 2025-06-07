@@ -1,5 +1,7 @@
 package com.example.tokoindah.controller.adminPage.product;
 
+import com.example.tokoindah.repository.ProdukRepostiory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,18 +29,28 @@ public class AddProductController {
     private Button tambah_btn;
 
     @FXML
-    public void initialize() {
-        back_btn.setOnAction(event -> {
-            try{
-                Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-view.fxml"));
-                Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
-                stage.setTitle("PRODUCT");
-                stage.setScene(scene);
-                stage.show();
-            }catch (Exception e){
+    private void initialize() {
+        tambah_btn.setOnAction(event -> {
+           try{
+               ProdukRepostiory produkRepostiory = new ProdukRepostiory();
+               produkRepostiory.createProduk(kode_produk.getText(), nama_produk.getText(), kategori.getText(), Integer.parseInt(stock.getText()), Integer.parseInt(harga_modal.getText()), Integer.parseInt(harga_jual.getText()));
+               Back(event);
+           }catch (Exception e){
                 System.out.println(e);
-            }
+           }
         });
+        back_btn.setOnAction(this::Back);
+    }
+    private void Back(ActionEvent event) {
+        try{
+            Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-view.fxml"));
+            Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
+            stage.setTitle("PRODUCT");
+            stage.setScene(scene);
+            stage.show();
+        }catch (Exception e){
+            System.out.println(e);
+        }
     }
 }

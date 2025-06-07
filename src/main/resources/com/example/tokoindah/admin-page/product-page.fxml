@@ -42,6 +42,7 @@
                     <TableColumn fx:id="harga_modal" text="Harga Modal" />
                     <TableColumn fx:id="harga_jual" text="Harga Jual" />
                     <TableColumn fx:id="tanggal_input" text="Tanggal Input" />
+                    <TableColumn fx:id="aksi" text="Aksi" />
                 </columns>
                 <columnResizePolicy>
                     <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
