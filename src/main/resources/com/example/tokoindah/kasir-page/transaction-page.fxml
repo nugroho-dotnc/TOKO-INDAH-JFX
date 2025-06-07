@@ -8,8 +8,8 @@
 
 <?import javafx.geometry.Insets?>
 <StackPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.tokoindah.controller.kasirPage.TransactionPage" stylesheets="@style.css" alignment="CENTER">
+           xmlns:fx="http://javafx.com/fxml"
+           fx:controller="com.example.tokoindah.controller.kasirPage.TransactionController" stylesheets="@style.css" alignment="CENTER">
                 <children>
                     <HBox spacing="20">
                         <VBox styleClass="addition-form">
@@ -65,7 +65,7 @@
                                             </padding>
                                         </TextField>
                                         <Label GridPane.columnIndex="0" GridPane.rowIndex="2" minWidth="100" styleClass="label-input">
-                                            Tanggal
+                                            Kasir
                                         </Label>
                                         <TextField  fx:id="alamat_pelanggan" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1">
                                             <padding>
