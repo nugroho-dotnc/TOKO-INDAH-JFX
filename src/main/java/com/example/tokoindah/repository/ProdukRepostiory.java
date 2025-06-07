@@ -38,7 +38,6 @@ public class ProdukRepostiory extends Database{
             ArrayList<Produk> products = new ArrayList<>();
             String sql = "SELECT * from produk";
             PreparedStatement ps = conn.prepareStatement(sql);
-            ps.setString(1, nama_produk);
             ResultSet rs = ps.executeQuery();
             while(rs.next()) {
                 String kode_produk = rs.getString("kode_produk");
