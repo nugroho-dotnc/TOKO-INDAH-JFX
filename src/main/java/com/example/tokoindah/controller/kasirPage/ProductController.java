@@ -60,11 +60,11 @@ public class ProductController {
                 }
             }
         });
-        ObservableList<Produk> dummyData = FXCollections.observableArrayList(
-                new Produk("PR001", "Indomie Goreng", "Makanan", 100, 2500, 3500, "2025-06-01"),
-                new Produk("PR002", "Aqua Botol", "Minuman", 200, 2000, 3000, "2025-06-02"),
-                new Produk("PR003", "Pensil 2B", "Alat Tulis", 50, 1500, 2500, "2025-06-03")
-        );
-        productTable.setItems(dummyData);
+//        ObservableList<Produk> dummyData = FXCollections.observableArrayList(
+//                new Produk("PR001", "Indomie Goreng", "Makanan", 100, 2500, 3500, "2025-06-01"),
+//                new Produk("PR002", "Aqua Botol", "Minuman", 200, 2000, 3000, "2025-06-02"),
+//                new Produk("PR003", "Pensil 2B", "Alat Tulis", 50, 1500, 2500, "2025-06-03")
+//        );
+//        productTable.setItems(dummyData);
     }
 }
