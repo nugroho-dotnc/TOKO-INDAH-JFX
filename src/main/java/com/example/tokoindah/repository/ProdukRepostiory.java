@@ -1,6 +1,8 @@
 package com.example.tokoindah.repository;
 import com.example.tokoindah.database.Database;
 import com.example.tokoindah.model.Produk;
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -119,6 +121,31 @@ public class ProdukRepostiory extends Database{
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<Produk> searchProduk(String nama_produk) {
+        try {
+            ArrayList<Produk> products = new ArrayList<>();
+            String sql = "SELECT * FROM produk WHERE nama_produk LIKE ?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                String kodeProduk = rs.getString("kode_produk");
+                String namaProduk = rs.getString("nama_produk");
+                String kategoriProduk = rs.getString("kategori_produk");
+                int stock = rs.getInt("stock");
+                float harga_modal = rs.getFloat("harga_modal");
+                float harga_jual = rs.getFloat("harga_jual");
+                Date tanggal_input = rs.getDate("tanggal_input");
+                Produk produk = new Produk(kodeProduk, namaProduk, kategoriProduk, stock, harga_modal, harga_jual, tanggal_input);
+                products.add(produk);
+            }
+            return products;
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+        return null;
     }
 
     public static String generateKodeProduk() {

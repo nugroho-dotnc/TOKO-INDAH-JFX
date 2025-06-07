@@ -42,6 +42,5 @@ CREATE TABLE keranjang (
   harga INT,
   qty INT,
   subtotal INT,
-  FOREIGN KEY (kode_produk) REFERENCES produk(kode_produk),
   FOREIGN KEY (nomor_transaksi) REFERENCES transaksi(nomor_transaksi)
 );

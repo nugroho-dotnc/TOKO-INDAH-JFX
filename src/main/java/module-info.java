@@ -8,6 +8,7 @@ module com.example.tokoindah {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires java.xml.crypto;
+    requires mysql.connector.j;
 
     opens com.example.tokoindah to javafx.fxml;
     exports com.example.tokoindah;
