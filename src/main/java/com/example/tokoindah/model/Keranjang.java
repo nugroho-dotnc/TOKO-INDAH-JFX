@@ -2,17 +2,17 @@ package com.example.tokoindah.model;
 
 public class Keranjang {
     int id_keranjang;
-    int id_transaksi;
+    String nomor_transaksi;
     private String kode_produk;
     private String nama_produk;
     private float harga;
     private int quantity;
     private float subtotal;
 
-    public Keranjang(int id_keranjang, int id_transaksi, String kode_produk, String nama_produk, float harga, int quantity, float subtotal) {
-        this.kode_produk = kode_produk;
-        this.id_transaksi = id_transaksi;
+    public Keranjang(int id_keranjang, String nomor_transaksi, String kode_produk, String nama_produk, float harga, int quantity, float subtotal) {
         this.id_keranjang = id_keranjang;
+        this.nomor_transaksi = nomor_transaksi;
+        this.kode_produk = kode_produk;
         this.nama_produk = nama_produk;
         this.harga = harga;
         this.quantity = quantity;
@@ -30,7 +30,7 @@ public class Keranjang {
     public float getHarga() {
         return harga;
     }
-    public int getQuantity() {
+    public int getQty() {
         return quantity;
     }
     public float getSubtotal() {
@@ -40,6 +40,6 @@ public class Keranjang {
     public int getIdKeranjang() {
         return id_keranjang;
     }
-    public int getId_transaksi() { return  id_transaksi; }
+    public String getId_transaksi() { return  nomor_transaksi; }
 }
 
