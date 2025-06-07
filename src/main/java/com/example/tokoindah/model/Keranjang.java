@@ -22,11 +22,9 @@ public class Keranjang {
     public String getKodeProduk() {
         return kode_produk;
     }
-
     public String getNamaProduk() {
         return nama_produk;
     }
-
     public float getHarga() {
         return harga;
     }
@@ -36,10 +34,9 @@ public class Keranjang {
     public float getSubtotal() {
         return subtotal;
     }
-
     public int getIdKeranjang() {
         return id_keranjang;
     }
-    public String getId_transaksi() { return  nomor_transaksi; }
+    public String getNomorTransaksi() { return  nomor_transaksi; }
 }
 
