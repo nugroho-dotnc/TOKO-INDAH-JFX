@@ -60,7 +60,6 @@ public class KeranjangRepository extends Database {
         KeranjangRepository keranjangRepository = new KeranjangRepository();
         keranjangRepository.createKeranjang(12, "PRDK32", "buku", 20000, 3, 60000);
         keranjangRepository.createKeranjang(12, "PRDK22", "tas", 50000, 2, 10000);
-
         ArrayList<Keranjang> keranjangList = keranjangRepository.showKeranjang(12);
     }
 }

@@ -1,6 +1,8 @@
 package com.example.tokoindah.controller;
 
 import com.example.tokoindah.HelloApplication;
+import com.example.tokoindah.model.User;
+import com.example.tokoindah.repository.UserRepository;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -27,27 +29,32 @@ public class LoginController {
     public void initialize() {
         username_field.setPromptText("Enter your username");
         password_field.setPromptText("Enter your password");
+        UserRepository userRepository = new UserRepository();
 
         login.setOnAction(event -> {
             String username = username_field.getText();
             String password = password_field.getText();
-
+            User user = userRepository.getUserByUsername(username);
             try {
                 Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-                if("admin".equals(username) && "admin".equals(password)) {
+                if(!password.equals(user.getPassword())) {
+                    System.out.println("Wrong password");
+                    return;
+                }
+                if(user.getRole().equals("admin")) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
                     stage.setTitle("ADMIN PAGE");
                     stage.setScene(scene);
                     stage.show();
-                } else if("kasir".equals(username) && "kasir".equals(password)) {
+                }else if(user.getRole().equals("kasir")) {
                     FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/kasir-view.fxml"));
                     Scene scene = new Scene(fxmlLoader.load(), 1200, 800);
                     stage.setTitle("KASIR PAGE");
                     stage.setScene(scene);
                     stage.show();
-                } else {
-                    message.setText("Invalid username or password!");
+                }else{
+                    System.out.println("Wrong role");
                 }
             } catch (IOException e) {
                 e.printStackTrace(); // Selalu cetak stack trace

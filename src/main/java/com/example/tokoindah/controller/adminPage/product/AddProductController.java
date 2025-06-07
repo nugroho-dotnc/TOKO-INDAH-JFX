@@ -33,7 +33,7 @@ public class AddProductController {
         tambah_btn.setOnAction(event -> {
            try{
                ProdukRepostiory produkRepostiory = new ProdukRepostiory();
-               produkRepostiory.createProduk(kode_produk.getText(), nama_produk.getText(), kategori.getText(), Integer.parseInt(stock.getText()), Integer.parseInt(harga_modal.getText()), Integer.parseInt(harga_jual.getText()));
+               produkRepostiory.createProduk(kode_produk.getText(), nama_produk.getText(), kategori.getText(), Integer.parseInt(stock.getText()), Float.parseFloat(harga_modal.getText()), Float.parseFloat(harga_jual.getText()));
                Back(event);
            }catch (Exception e){
                 System.out.println(e);

@@ -131,5 +131,6 @@ public class PelangganRepository extends Database {
     public static void main(String[] args) {
         PelangganRepository pelangganRepository = new PelangganRepository();
         pelangganRepository.createPelanggan("yanto sujatmiko", "08926877923", "Bekasi bagian ngalor sitik");
+        pelangganRepository.createPelanggan("bambang suprapto aditama", "0896837263", "BOGOR KE KANAN DIKIT");
     }
 }

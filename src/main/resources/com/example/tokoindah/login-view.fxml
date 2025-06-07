@@ -10,20 +10,18 @@
 <?import javafx.scene.control.PasswordField?>
 <VBox alignment="CENTER" spacing="20.0" xmlns="http://javafx.com/javafx"
       xmlns:fx="http://javafx.com/fxml"
-      fx:controller="com.example.tokoindah.controller.LoginController" >
+      fx:controller="com.example.tokoindah.controller.LoginController" stylesheets="@style.css">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
     <VBox alignment="CENTER" fillWidth="false">
-        <GridPane
-                hgap="10" vgap="10"
-        >
-            <Label text="Username:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-            <TextField fx:id="username_field" GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="400" minHeight="20" />
-            <Label text="password:" GridPane.columnIndex="0" GridPane.rowIndex="2" />
-            <PasswordField fx:id="password_field" GridPane.columnIndex="0" GridPane.rowIndex="3" minWidth="400" minHeight="20"/>
+        <GridPane hgap="10" vgap="10">
+            <Label text="username:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label-input"/>
+            <TextField fx:id="username_field" GridPane.columnIndex="0" GridPane.rowIndex="1" minWidth="400" minHeight="20" styleClass="custom-textInput" />
+            <Label text="password:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="label-input"/>
+            <PasswordField fx:id="password_field" GridPane.columnIndex="0" GridPane.rowIndex="3" minWidth="400" minHeight="20" styleClass="custom-textInput"/>
         </GridPane>
     </VBox>
-    <Button text="LOGIN!" fx:id="login" minHeight="28" minWidth="48"/>
+    <Button text="LOGIN!" fx:id="login" minHeight="28" minWidth="48" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
     <Label fx:id="message"/>
 </VBox>

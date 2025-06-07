@@ -73,8 +73,6 @@ public class UserRepository extends Database {
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepository();
         userRepository.createUser("Admin", "admin", "admin123", "admin");
-        ArrayList<User> users = userRepository.getUsers();
-        User user = userRepository.getUserByUsername("admin");
-        System.out.println(user.getUsername());
+        userRepository.createUser("Kasir", "kasir", "kasir123", "kasir");
     }
 }
