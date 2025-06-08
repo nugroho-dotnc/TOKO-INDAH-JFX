@@ -39,4 +39,7 @@ public class Transaksi {
     public Pelanggan getPelanggan() {
         return pelanggan;
     }
+    public String getNamaPelanggan(){
+        return pelanggan.getNama();
+    }
 }

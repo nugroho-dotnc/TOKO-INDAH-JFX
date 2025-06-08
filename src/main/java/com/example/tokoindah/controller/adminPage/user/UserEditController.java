@@ -24,6 +24,7 @@ public class UserEditController {
 
     @FXML
     private void initialize() {
+
         back_btn.setOnAction(this::Back);
     }
     public void setUser(User user) {
@@ -33,6 +34,7 @@ public class UserEditController {
 
     private void isiDataKeForm() {
         if (user != null) {
+            name.setText(user.getName());
 
         }
     }

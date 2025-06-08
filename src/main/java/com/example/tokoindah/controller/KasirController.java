@@ -14,7 +14,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class KasirController {
-
+    @FXML
+    private Button historyButton;
     @FXML
     private StackPane contentPane;
 
@@ -73,4 +74,7 @@ public class KasirController {
     }
 
 
+    public void handleHistory(ActionEvent actionEvent) {
+
+    }
 }

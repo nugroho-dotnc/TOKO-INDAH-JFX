@@ -19,24 +19,61 @@ public class Keranjang {
         this.subtotal = subtotal;
     }
 
+    // Getters
     public String getKodeProduk() {
         return kode_produk;
     }
+
     public String getNamaProduk() {
         return nama_produk;
     }
+
     public float getHarga() {
         return harga;
     }
+
     public int getQty() {
         return quantity;
     }
+
     public float getSubtotal() {
         return subtotal;
     }
+
     public int getIdKeranjang() {
         return id_keranjang;
     }
-    public String getNomorTransaksi() { return  nomor_transaksi; }
-}
 
+    public String getNomorTransaksi() {
+        return nomor_transaksi;
+    }
+
+    // Setters
+    public void setKodeProduk(String kode_produk) {
+        this.kode_produk = kode_produk;
+    }
+
+    public void setNamaProduk(String nama_produk) {
+        this.nama_produk = nama_produk;
+    }
+
+    public void setHarga(float harga) {
+        this.harga = harga;
+    }
+
+    public void setQty(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public void setSubtotal(float subtotal) {
+        this.subtotal = subtotal;
+    }
+
+    public void setIdKeranjang(int id_keranjang) {
+        this.id_keranjang = id_keranjang;
+    }
+
+    public void setNomorTransaksi(String nomor_transaksi) {
+        this.nomor_transaksi = nomor_transaksi;
+    }
+}

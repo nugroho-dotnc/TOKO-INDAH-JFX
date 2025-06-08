@@ -88,22 +88,22 @@
                             <HBox spacing="10" alignment="BOTTOM_CENTER" HBox.hgrow="ALWAYS">
                                 <VBox spacing="10">
                                     <Label styleClass="label-input" text="Kode Produk"></Label>
-                                    <TextField  fx:id="input_kp" promptText="Cari kode produk ..." styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    <TextField  fx:id="input_kode_product" promptText="Cari kode produk ..." styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
                                 </VBox>
                                 <VBox spacing="10">
                                     <Label styleClass="label-input" text="Qty"></Label>
-                                    <TextField  fx:id="input_qty" promptText="Qty" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                                    <TextField  fx:id="input_qty_product" promptText="Qty" styleClass="custom-textInput, w-full" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
                                 </VBox>
                                 <Region HBox.hgrow="ALWAYS"/>
-                                <Button text="Tambah" fx:id="tambah_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
+                                <Button text="Tambah" fx:id="tambah_keranjang_btn" style="-fx-background-color: #2c3e50; -fx-text-fill: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2); -fx-font-size: 16"/>
                             </HBox>
-                            <TableView fx:id="productTable" prefHeight="200.0" >
+                            <TableView fx:id="keranjangTable" prefHeight="200.0" >
                                 <columns>
                                     <TableColumn fx:id="no" text="No" />
                                     <TableColumn fx:id="kode_produk" text="Kode Produk" />
                                     <TableColumn fx:id="nama_produk" text="Nama Produk" />
-                                    <TableColumn fx:id="harga_modal" text="Harga Modal" />
-                                    <TableColumn fx:id="qty" text="Qty" />
+                                    <TableColumn fx:id="harga" text="Harga" />
+                                    <TableColumn fx:id="qty" text="Quantity" />
                                     <TableColumn fx:id="subtotal" text="Subtotal" />
                                     <TableColumn fx:id="opsi" text="Opsi" />
                                 </columns>
@@ -112,14 +112,14 @@
                                 </columnResizePolicy>
                             </TableView>
                             <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS" styleClass="total-container">
-                                <Label styleClass="content-label" text="RP. 128.000"/>
+                                <Label styleClass="content-label" fx:id="total_label" text="0"/>
                             </HBox>
                             <HBox spacing="20">
-                                <TextArea promptText="Catatan Transaksi (optional)" prefHeight="100" HBox.hgrow="ALWAYS"/>
+                                <TextArea promptText="Catatan Transaksi (optional)" fx:id="catatan_transaksi" prefHeight="100" HBox.hgrow="ALWAYS"/>
                                 <VBox minWidth="300" spacing="10">
                                     <HBox alignment="CENTER" spacing="20">
                                         <Label text="Pembayaran" minWidth="100" styleClass="label-input"></Label>
-                                        <TextField fx:id="pembayaran" styleClass="custom-textInput, w-full">
+                                        <TextField fx:id="input_pembayaran" styleClass="custom-textInput, w-full">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>
@@ -127,7 +127,7 @@
                                     </HBox>
                                     <HBox alignment="CENTER"  spacing="20">
                                         <Label text="Kembalian" minWidth="100" styleClass="label-input"></Label>
-                                        <TextField fx:id="Kembalian" styleClass="custom-textInput, w-full">
+                                        <TextField fx:id="input_kembalian" styleClass="custom-textInput, w-full" disable="true">
                                             <padding>
                                                 <Insets right="12" left="12" top="4" bottom="4"/>
                                             </padding>

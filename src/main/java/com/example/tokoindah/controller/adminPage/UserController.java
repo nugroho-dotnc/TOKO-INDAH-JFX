@@ -64,7 +64,19 @@ public class UserController {
                 e.printStackTrace();
             }
         });
-
+        search_btn.setOnAction(event -> {
+            String query = search_field.getText();
+            if(query.isEmpty()){
+                items = userRepository.getUsers();
+                itemsObservable = FXCollections.observableArrayList(items);
+            }else {
+                User items = userRepository.getUserByUsername(query);
+                ArrayList<User> userList= new ArrayList<>();
+                userList.add(items);
+                itemsObservable = FXCollections.observableArrayList(userList);
+            }
+            userTable.setItems(itemsObservable);
+        });
         aksi.setCellFactory(col -> new TableCell<>() {
             private final Button updateBtn = new Button("Update");
             private final Button deleteBtn = new Button("Delete");
