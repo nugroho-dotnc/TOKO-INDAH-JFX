@@ -10,21 +10,50 @@ import com.example.tokoindah.model.Keranjang;
 public class KeranjangRepository extends Database {
     public void createKeranjang(ArrayList<Keranjang> keranjangList) {
         try {
-           String sql = "INSERT INTO keranjang (nomor_transaksi, kode_produk, nama_produk, harga, qty, subtotal) VALUES (?,?,?,?,?,?)";
-           PreparedStatement stmt = conn.prepareStatement(sql);
-           for(Keranjang keranjang : keranjangList) {
-               stmt.setString(1, keranjang.getNomorTransaksi());
-               stmt.setString(2, keranjang.getKodeProduk());
-               stmt.setString(3, keranjang.getNamaProduk());
-               stmt.setFloat(4, keranjang.getHarga());
-               stmt.setInt(5, keranjang.getQty());
-               stmt.setFloat(6, keranjang.getSubtotal());
-               stmt.addBatch();
-           }
-           int[] result = stmt.executeBatch();
-           System.out.println(result + " rows inserted");
+            // Mulai transaksi manual
+            conn.setAutoCommit(false);
+
+            String insertSql = "INSERT INTO keranjang (nomor_transaksi, kode_produk, nama_produk, harga, qty, subtotal) VALUES (?,?,?,?,?,?)";
+            String updateStockSql = "UPDATE produk SET stock = stock - ? WHERE kode_produk = ?";
+
+            PreparedStatement insertStmt = conn.prepareStatement(insertSql);
+            PreparedStatement updateStockStmt = conn.prepareStatement(updateStockSql);
+
+            for (Keranjang keranjang : keranjangList) {
+                // Simpan ke tabel keranjang
+                insertStmt.setString(1, keranjang.getNomorTransaksi());
+                insertStmt.setString(2, keranjang.getKodeProduk());
+                insertStmt.setString(3, keranjang.getNamaProduk());
+                insertStmt.setFloat(4, keranjang.getHarga());
+                insertStmt.setInt(5, keranjang.getQty());
+                insertStmt.setFloat(6, keranjang.getSubtotal());
+                insertStmt.addBatch();
+
+                // Kurangi stok produk
+                updateStockStmt.setInt(1, keranjang.getQty());
+                updateStockStmt.setString(2, keranjang.getKodeProduk());
+                updateStockStmt.addBatch();
+            }
+
+            // Eksekusi batch insert & update
+            insertStmt.executeBatch();
+            updateStockStmt.executeBatch();
+
+            // Commit transaksi
+            conn.commit();
+            conn.setAutoCommit(true);
+
+            System.out.println("Keranjang berhasil ditambahkan dan stok diperbarui.");
+
         } catch (SQLException e) {
-            System.out.println(e.getMessage());
+            try {
+                // Rollback jika gagal
+                conn.rollback();
+                conn.setAutoCommit(true);
+            } catch (SQLException rollbackEx) {
+                rollbackEx.printStackTrace();
+            }
+            System.out.println("Gagal menyimpan keranjang atau memperbarui stok: " + e.getMessage());
             e.printStackTrace();
         }
     }
