@@ -48,12 +48,12 @@ public class TransactionController {
     @FXML
     public void initialize() {
         TransaksiRepository p = new TransaksiRepository();
-        nomor_transaksi.setCellValueFactory(new PropertyValueFactory<>("nomor_transaksi"));
-        tanggal_transaksi.setCellValueFactory(new PropertyValueFactory<>("tanggal_transaksi"));
-        pelanggan.setCellValueFactory(new PropertyValueFactory<>("pelanggan"));
-        total.setCellValueFactory(new PropertyValueFactory<>("total"));
-        pembayaran.setCellValueFactory(new PropertyValueFactory<>("pembayaran"));
-        kembalian.setCellValueFactory(new PropertyValueFactory<>("kembalian"));
+        nomor_transaksi.setCellValueFactory(new PropertyValueFactory<>("NomorTransaksi"));
+        tanggal_transaksi.setCellValueFactory(new PropertyValueFactory<>("TanggalTransaksi"));
+        pelanggan.setCellValueFactory(new PropertyValueFactory<>("NamaPelanggan"));
+        total.setCellValueFactory(new PropertyValueFactory<>("Total"));
+        pembayaran.setCellValueFactory(new PropertyValueFactory<>("Pembayaran"));
+        kembalian.setCellValueFactory(new PropertyValueFactory<>("Kembalian"));
         nomor.setCellFactory(col -> new TableCell<>() {
             @Override
             protected void updateItem(Void item, boolean empty) {

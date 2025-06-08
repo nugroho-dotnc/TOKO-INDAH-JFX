@@ -30,7 +30,7 @@ public class TransaksiRepository extends Database {
     public ArrayList<Transaksi> getTransaksi() {
         try {
            ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
-           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE deleted = false";
+           String sql = "SELECT * FROM transaksi JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE deleted = false";
            PreparedStatement stmt = conn.prepareStatement(sql);
            ResultSet result = stmt.executeQuery();
            while(result.next()) {
@@ -122,7 +122,7 @@ public class TransaksiRepository extends Database {
         try {
            Date convertedDate = Date.valueOf(tanggal);
            ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
-           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE tanggal_transaksi = ?";
+           String sql = "SELECT * FROM transaksi JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE tanggal_transaksi = ?";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setDate(1, convertedDate);
            ResultSet rs = stmt.executeQuery();
@@ -189,6 +189,10 @@ public class TransaksiRepository extends Database {
         TransaksiRepository t = new TransaksiRepository();
         Transaksi transaksi = t.getTransaksiByKode("TR004");
         System.out.println(transaksi.getNomorTransaksi());
+        ArrayList<Transaksi> list = t.getTransaksi();
+        for(Transaksi trans : list) {
+            System.out.println(trans.getNomorTransaksi());
+        }
     }
 
 
