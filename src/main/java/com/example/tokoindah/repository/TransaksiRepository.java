@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class TransaksiRepository extends Database {
 
-    public String createTransaksi() {
+    public void createTransaksi() {
         try {
            String sql = "INSERT INTO transaksi (nomor_transaksi, tanggal_transaksi) VALUES (?, ?)";
            String kode = generateKodeTransansaksi();
@@ -19,18 +19,17 @@ public class TransaksiRepository extends Database {
            stm.setString(1, kode);
            stm.setDate(2, tanggalTransaksi);
            stm.executeUpdate();
-           return kode;
+           System.out.println("Berhasil membuat transaksi");
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
-        return null;
     }
 
     public ArrayList<Transaksi> getTransaksi() {
         try {
            ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
-           String sql = "SELECT * FROM transaksi JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE deleted = false";
+           String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE deleted = FALSE";
            PreparedStatement stmt = conn.prepareStatement(sql);
            ResultSet result = stmt.executeQuery();
            while(result.next()) {
@@ -47,8 +46,8 @@ public class TransaksiRepository extends Database {
                Pelanggan pelanggan = new Pelanggan(kodePelanggan, nama, noTelepon, alamat);
                Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi, total,  pembayaran, kembalian, pelanggan);
                dataTransaksi.add(t);
-               return dataTransaksi;
            };
+           return dataTransaksi;
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -141,8 +140,8 @@ public class TransaksiRepository extends Database {
                Pelanggan p = new Pelanggan(kodePelanggan, namaPelanggan, telepon, alamat);
                Transaksi t = new Transaksi(nomorTransaksi, tanggalTransaksi, catatanTransaksi ,total, pembayaran, kembalian, p);
                dataTransaksi.add(t);
-               return dataTransaksi;
            }
+           return dataTransaksi;
         } catch(SQLException e) {
             System.out.println(e.getMessage());
             e.printStackTrace();
@@ -187,8 +186,6 @@ public class TransaksiRepository extends Database {
 
     public static void main(String[] args) {
         TransaksiRepository t = new TransaksiRepository();
-        Transaksi transaksi = t.getTransaksiByKode("TR004");
-        System.out.println(transaksi.getNomorTransaksi());
         ArrayList<Transaksi> list = t.getTransaksi();
         for(Transaksi trans : list) {
             System.out.println(trans.getNomorTransaksi());

@@ -265,7 +265,7 @@ public class TransactionController {
 
                 transaksiRepository.createTransaksi();
                 keranjangRepository.createKeranjang(stateCart);
-                transaksiRepository.updateTransaksi(kodeTransaksi, catatan_transaksi.getText(), total, pembayaran, kembalian, newPelanggan.getNotelp());
+                transaksiRepository.updateTransaksi(kodeTransaksi, catatan_transaksi.getText(), total, pembayaran, kembalian, newPelanggan.getKodePelanggan());
                 new Alert(Alert.AlertType.INFORMATION, "Transaksi berhasil disimpan!").show();
                 resetFormSetelahTransaksi();
             } catch (NumberFormatException e) {
