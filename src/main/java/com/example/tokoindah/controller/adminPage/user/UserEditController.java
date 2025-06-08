@@ -12,19 +12,29 @@ import javafx.stage.Stage;
 
 public class UserEditController {
     public TextField name;
+    @FXML
     public TextField username;
+    @FXML
     public TextField password;
+    @FXML
     public TextField role;
     @FXML
     public Button back_btn;
     @FXML
     private Button edit_user_btn;
-
+    @FXML
     private User user;
-
     @FXML
     private void initialize() {
-
+        edit_user_btn.setOnAction(event -> {
+            try{
+                com.example.tokoindah.repository.UserRepository produkRepostiory = new com.example.tokoindah.repository.UserRepository();
+                produkRepostiory.updateUser(user.getId(),name.getText(), username.getText(), password.getText(), role.getText());
+                Back(event);
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        });
         back_btn.setOnAction(this::Back);
     }
     public void setUser(User user) {
@@ -35,7 +45,9 @@ public class UserEditController {
     private void isiDataKeForm() {
         if (user != null) {
             name.setText(user.getName());
-
+            username.setText(user.getUsername());
+            password.setText(user.getPassword());
+            role.setText(user.getRole());
         }
     }
     private void Back(ActionEvent event) {
