@@ -126,7 +126,8 @@ public class TransaksiRepository extends Database {
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setDate(1, convertedDate);
            ResultSet rs = stmt.executeQuery();
-           if(rs.next()) {
+           /*if*/
+           while(rs.next()) {
                String nomorTransaksi = rs.getString("nomor_transaksi");
                Date tanggalTransaksi = rs.getDate("tanggal_transaksi");
                String catatanTransaksi = rs.getString("catatan_transaksi");
