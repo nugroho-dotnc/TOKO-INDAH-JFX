@@ -39,13 +39,18 @@ public class DetailTransaksiController {
     public Button cetak_btn;
 
     KeranjangRepository keranjangRepository = new KeranjangRepository();
-    ArrayList<Keranjang> stateCart = new ArrayList<>();
-    ObservableList<Keranjang> keranjangList = FXCollections.observableArrayList();
+    ArrayList<Keranjang> stateCart;
+
     Transaksi transaksi;
+    ObservableList<Keranjang> keranjangList = FXCollections.observableArrayList();
+
     public void setTransaksi(Transaksi transaksi) {
         this.transaksi = transaksi;
+        stateCart = keranjangRepository.getKeranjangByNomorTransaksi(transaksi.getNomorTransaksi());
+        keranjangList.setAll(stateCart); // update list setelah dapat data
         setupAll();
     }
+
     @FXML
     public void initialize() {
         kode_produk.setCellValueFactory(new PropertyValueFactory<>("KodeProduk"));
@@ -60,23 +65,14 @@ public class DetailTransaksiController {
                 setText(empty ? null : String.valueOf(getIndex() + 1));
             }
         });
-        keranjangList = FXCollections.observableArrayList(stateCart);
+
         keranjangTable.setItems(keranjangList);
+
         cetak_btn.setOnAction(event -> {
             Alert alert = new Alert(Alert.AlertType.INFORMATION, "Detail Transaksi Berhasil Di Cetak");
             alert.show();
         });
         back_btn.setOnAction(this::Back);
-    }
-    public void setupAll(){
-        kode_transaksi.setText(transaksi.getNomorTransaksi());
-        kode_produk.setText(transaksi.getNomorTransaksi());
-        tanggal_transaksi.setText(transaksi.getTanggalTransaksi().toString());
-        pelanggan_transaksi.setText(transaksi.getPelanggan().getNama());
-        total_transaksi.setText(String.valueOf(transaksi.getTotal()));
-        pembayaran_transaksi.setText(String.valueOf(transaksi.getPembayaran()));
-        kembalian_transaksi.setText(String.valueOf(transaksi.getKembalian()));
-        stateCart = keranjangRepository.getKeranjangByNomorTransaksi(transaksi.getNomorTransaksi());
     }
     private void Back(ActionEvent event) {
         try{
@@ -89,5 +85,13 @@ public class DetailTransaksiController {
         }catch (Exception e){
             System.out.println(e);
         }
+    }
+    public void setupAll() {
+        kode_transaksi.setText(transaksi.getNomorTransaksi());
+        tanggal_transaksi.setText(transaksi.getTanggalTransaksi().toString());
+        pelanggan_transaksi.setText(transaksi.getPelanggan().getNama());
+        total_transaksi.setText(String.valueOf(transaksi.getTotal()));
+        pembayaran_transaksi.setText(String.valueOf(transaksi.getPembayaran()));
+        kembalian_transaksi.setText(String.valueOf(transaksi.getKembalian()));
     }
 }
