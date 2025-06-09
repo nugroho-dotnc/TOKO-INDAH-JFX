@@ -97,7 +97,7 @@ public class ProductController {
             }
         });
         aksi.setCellFactory(col -> new TableCell<>() {
-            private final Button updateBtn = new Button("Update");
+            private final Button updateBtn = new Button("Edit");
             private final Button deleteBtn = new Button("Delete");
             private final HBox hBox = new HBox(10, deleteBtn, updateBtn); // Spacing antar tombol
             {
