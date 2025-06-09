@@ -80,7 +80,7 @@ public class UserController {
         aksi.setCellFactory(col -> new TableCell<>() {
             private final Button updateBtn = new Button("Update");
             private final Button deleteBtn = new Button("Delete");
-            private final HBox hBox = new HBox(10, updateBtn, deleteBtn); // Spacing antar tombol
+            private final HBox hBox = new HBox(10, deleteBtn, updateBtn); // Spacing antar tombol
             {
                 updateBtn.setStyle("-fx-background-color: #3498db; -fx-text-fill: white;");
                 deleteBtn.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white;");
