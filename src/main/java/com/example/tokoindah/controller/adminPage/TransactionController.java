@@ -99,7 +99,15 @@ public class TransactionController {
                     System.out.println("Delete clicked: " + transaksi.getNomorTransaksi());
                 });
             }
-
+            @Override
+            protected void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(hBox);
+                }
+            }
         });
     }
 

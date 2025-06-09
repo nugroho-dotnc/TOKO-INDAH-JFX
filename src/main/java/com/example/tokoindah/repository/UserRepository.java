@@ -112,6 +112,6 @@ public class UserRepository extends Database {
 
     public static void main(String[] args) {
         UserRepository userRepository = new UserRepository();
-        userRepository.updateUser(5, "nuganugay", "nugay", "nugay123", "admin");
+        userRepository.createUser("farrelililarila", "anomarel", "relariliro", "admin");
     }
 }
