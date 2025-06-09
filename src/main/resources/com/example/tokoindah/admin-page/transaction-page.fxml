@@ -37,7 +37,7 @@
                     <TableView fx:id="transaksiTable" prefHeight="400.0" VBox.vgrow="ALWAYS">
                         <columns>
                             <TableColumn fx:id="nomor" text="No." />
-                            <TableColumn fx:id="nomor_transaksi" text="Nomor Transaksi" />
+                            <TableColumn fx:id="nomor_transaksi" text="Kode Transaksi" />
                             <TableColumn fx:id="tanggal_transaksi" text="Tanggal Transaksi" />
                             <TableColumn fx:id="pelanggan" text="Nama Pelanggan" />
                             <TableColumn fx:id="total" text="Total" />

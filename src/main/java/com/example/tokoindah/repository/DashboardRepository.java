@@ -28,7 +28,7 @@ public class DashboardRepository extends Database{
     public int countTransaksi() {
         try {
             int count = 0;
-            String sql = "SELECT COUNT(*) as count FROM transaksi";
+            String sql = "SELECT COUNT(*) as count FROM transaksi  WHERE deleted = false";
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet res = stmt.executeQuery();
             if(res.next()) {

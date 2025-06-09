@@ -24,7 +24,7 @@
                         <padding>
                             <Insets topRightBottomLeft="30.0"/>
                         </padding>
-                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;">
+                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;" fx:id="pelanggan">
                         </Label>
                         <Label text="Pelanggan"/>
                     </VBox>
@@ -36,9 +36,9 @@
                         <padding>
                             <Insets topRightBottomLeft="30.0"/>
                         </padding>
-                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;">
+                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;" fx:id="keranjang">
                         </Label>
-                        <Label text="Keranjang"/>
+                        <Label text="Transaksi"/>
                     </VBox>
                     <VBox alignment="CENTER"
                           style="-fx-background-color: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
@@ -48,7 +48,7 @@
                         <padding>
                             <Insets topRightBottomLeft="30.0"/>
                         </padding>
-                        <Label text="1" style="-fx-font-size: 20.0;  -fx-font-weight: bold;">
+                        <Label text="1" style="-fx-font-size: 20.0;  -fx-font-weight: bold;" fx:id="barang_terjual">
                         </Label>
                         <Label text="Pendapatan"/>
                     </VBox>
@@ -59,45 +59,21 @@
                         <padding>
                             <Insets topRightBottomLeft="30.0"/>
                         </padding>
-                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;">
+                        <Label text="1" style="-fx-font-size: 20.0; -fx-font-weight: bold;" fx:id="revenue">
                         </Label>
                         <Label text="Total Revenue"/>
                     </VBox>
                 </GridPane>
 
                 <Label text="Laporan Transaksi" style="-fx-font-size: 24.0; -fx-text-alignment: left" />
-                <TableView fx:id="productTable" prefHeight="400.0" prefWidth="600.0">
+                <TableView fx:id="transactionTable" prefHeight="400.0" prefWidth="600.0">
                     <columns>
-                        <TableColumn fx:id="nomor_transaksi" text="nomor transaksi">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="nomor_transaksi" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="tanggal_transaksi" text="tanggal transaksi">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="tanggal_transaksi" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="nama_pelanggan" text="nama pelanggan">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="nama_pelanggan" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="total" text="total">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="total" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="pembayaran" text="pembayaran">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="pembayaran" />
-                            </cellValueFactory>
-                        </TableColumn>
-                        <TableColumn fx:id="kembalian" text="kembalian">
-                            <cellValueFactory>
-                                <PropertyValueFactory property="kembalian" />
-                            </cellValueFactory>
-                        </TableColumn>
+                        <TableColumn fx:id="nomor_transaksi" text="Kode Transaksi"/>
+                        <TableColumn fx:id="tanggal_transaksi" text="Tanggal Transaksi"/>
+                        <TableColumn fx:id="nama_pelanggan" text="Nama Pelanggan"/>
+                        <TableColumn fx:id="total" text="Total"/>
+                        <TableColumn fx:id="pembayaran" text="Pembayaran"/>
+                        <TableColumn fx:id="kembalian" text="Kembalian"/>
                     </columns>
                     <columnResizePolicy>
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" /> </columnResizePolicy>

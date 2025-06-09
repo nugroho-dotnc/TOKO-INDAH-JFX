@@ -1,14 +1,19 @@
 package com.example.tokoindah.controller.adminPage;
 
+import com.example.tokoindah.controller.adminPage.product.EditProductController;
 import com.example.tokoindah.model.Pelanggan;
+import com.example.tokoindah.model.Produk;
 import com.example.tokoindah.model.Transaksi;
 import com.example.tokoindah.repository.TransaksiRepository;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.HBox;
+import javafx.stage.Stage;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -83,9 +88,15 @@ public class TransactionController {
 
         aksi.setCellFactory(col -> new TableCell<>() {
             private final Button deleteBtn = new Button("Delete");
-            private final HBox hBox = new HBox(10, deleteBtn); // Spacing antar tombol
+            private final  Button detailBtn = new Button("Detail");
+            private final HBox hBox = new HBox(10, deleteBtn, detailBtn); // Spacing antar tombol
             {
                 deleteBtn.setStyle("-fx-background-color: #e74c3c; -fx-text-fill: white;");
+                detailBtn.setStyle("-fx-background-color: #dba634; -fx-text-fill: white;");
+                detailBtn.setOnAction(event -> {
+                    Transaksi transaksi = getTableView().getItems().get(getIndex());
+                    bukaHalamanDetail(transaksi);
+                });
                 deleteBtn.setOnAction(event -> {
                     Transaksi transaksi = getTableView().getItems().get(getIndex());
                     Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Yakin ingin menghapus produk ini?", ButtonType.YES, ButtonType.NO);
@@ -110,33 +121,19 @@ public class TransactionController {
             }
         });
     }
-
-    /*private void bukaHalamanEdit(Transaksi transaksi) {
+    private void bukaHalamanDetail(Transaksi transaksi) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-page/edit-product-view.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/tokoindah/admin-page/detailTransaksi.fxml"));
             Scene scene = new Scene(loader.load(), 1200, 800);
-            EditProductController controller = loader.getController();
+            DetailTransaksiController controller = loader.getController();
             controller.setTransaksi(transaksi);
-            Stage stage = (Stage) productTable.getScene().getWindow();
+            Stage stage = (Stage) transaksiTable.getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Edit Produk");
+            stage.setTitle("Detail Transaksi");
             stage.show();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }*/
-
-
-
-    /*public TableColumn nomor;
-    public TextField search_field;
-    public Button search_btn;
-    public TableView transaksiTable;
-    public TableColumn nomor_transaksi;
-    public TableColumn tanggal_transaksi;
-    public TableColumn pelanggan;
-    public TableColumn total;
-    public TableColumn pembayaran;
-    public TableColumn kembalian;*/
+    }
 
 }

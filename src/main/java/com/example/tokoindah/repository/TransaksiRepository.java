@@ -72,7 +72,6 @@ public class TransaksiRepository extends Database {
             e.printStackTrace();
         }
     }
-
     public Transaksi getTransaksiByKode(String kode) {
         try {
            String sql = "SELECT * FROM transaksi LEFT JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE nomor_transaksi = ?";
@@ -121,7 +120,7 @@ public class TransaksiRepository extends Database {
         try {
            Date convertedDate = Date.valueOf(tanggal);
            ArrayList<Transaksi> dataTransaksi = new ArrayList<>();
-           String sql = "SELECT * FROM transaksi JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE tanggal_transaksi = ?";
+           String sql = "SELECT * FROM transaksi JOIN pelanggan ON transaksi.kode_pelanggan = pelanggan.kode_pelanggan WHERE tanggal_transaksi = ? AND deleted = false";
            PreparedStatement stmt = conn.prepareStatement(sql);
            stmt.setDate(1, convertedDate);
            ResultSet rs = stmt.executeQuery();
