@@ -50,7 +50,7 @@
                         </padding>
                         <Label text="1" style="-fx-font-size: 20.0;  -fx-font-weight: bold;" fx:id="barang_terjual">
                         </Label>
-                        <Label text="Pendapatan"/>
+                        <Label text="Barang Terjual"/>
                     </VBox>
                     <VBox alignment="CENTER" style="-fx-background-color: #FFF; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.1), 10, 0, 0, 2);"
                           GridPane.columnIndex="3"
