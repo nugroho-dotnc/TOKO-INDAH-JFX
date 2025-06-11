@@ -17,8 +17,8 @@
         <VBox alignment="CENTER_LEFT" spacing="20">
             <VBox spacing="10">
                 <HBox alignment="CENTER_LEFT">
-                    <Label styleClass="label-input">
-                        Tanggal
+                    <Label styleClass="content-label">
+                      Kode Transaksi
                     </Label>
                     <Region HBox.hgrow="ALWAYS"/>
                     <Label fx:id="kode_transaksi" styleClass="content-label">
